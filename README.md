@@ -14,7 +14,8 @@
 
 Aquesta pràctica conté dos branques, per al wifi i per al bluetooth
 
-[WIFI]()
+
+[WIFI](https://github.com/rubiolbernat/Practica_3)
 
 [Bluetooth]()
 
