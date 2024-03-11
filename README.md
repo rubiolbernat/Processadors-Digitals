@@ -2,15 +2,15 @@
 
 **Alumne: Bernat Rubiol**
 
-## Pràctica 1
+## Pràctica 1 Blink
 
 [Link al repositori](https://github.com/rubiolbernat/Practica_1_Blink)
 
-## Pràctica 2
+## Pràctica 2 Interrupcions
 
 [Link al repositori](https://github.com/rubiolbernat/Practica_2_Interrupcions)
 
-## Pràctica 3
+## Pràctica 3 Wifi i Bt
 
 Aquesta pràctica conté dos carpetes, per al wifi i per al bluetooth
 
