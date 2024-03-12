@@ -21,4 +21,6 @@ Aquesta pràctica conté dos carpetes, per al wifi i per al bluetooth
 |- |[WIFI](https://github.com/rubiolbernat/Practica_3/tree/main/P3_WIFI)  | 
 |- |[Bluetooth](https://github.com/rubiolbernat/Practica_3/tree/main/P3_Bluetooth)|
 
-## Pràctica 4
+## Pràctica 4 RTOS
+
+[Link al repositori](https://github.com/rubiolbernat/Practica_4_RTOSs)
