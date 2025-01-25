@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EXERCICI2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h3 id="ejercicio-pr%C3%A1ctico-2"><strong>EJERCICIO PRÁCTICO 2</strong></h3>
+<p>El objetivo de esta parte de la práctica era conseguir reproducir un archivo .wav desde una SD externa.
+Para eso he usado parte del código de la anterior práctica.
+Voy a explicar un poco el código usado para esta parte de la práctica.</p>
+<p>Primero de todo mencionar que con esta práctica vamos a usar dos tipos de buses: <em>bus SPI, bus I2S</em>
+Empezemos incluyendo las librerías necesarias:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-meta">#include "Audio.h"</span>
+<span class="hljs-meta">#include "SD.h"</span>
+<span class="hljs-meta">#include "FS.h"</span>
+<span class="hljs-comment">// Digital I/O used</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SD_CS 5</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SPI_MOSI 23</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SPI_MISO 19</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SPI_SCK 18</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> I2S_DOUT 22</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> I2S_BCLK 26</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> I2S_LRC 25</span>
+
+</div></code></pre>
+<p>Usaremos tres librerías: <em>Audio.h, SD.h, FS.h</em>.</p>
+<p>Definimos los puertos que vamos a usar para la transmisión y recepción de datos. Podemos ver de forma rápida que puerto pertenece a cada componente mediante el nombre, SPI_MOSI,SPI_MISO,SPI_SCK,SPI_CS los vamos a usar para la tarjeta SD y las variables I2S_DOUT, I2S_BCLK, I2S_LRC las vamos a conectar al MAX98357A.</p>
+<p>Que hacemos en el void setup?</p>
+<h2 id="void-setup"><strong>void setup()</strong></h2>
+<pre class="hljs"><code><div>Audio audio;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span>{
+
+Serial.begin(<span class="hljs-number">9600</span>);
+
+pinMode(SD_CS, OUTPUT);
+digitalWrite(SD_CS, HIGH);
+SPI.begin(SPI_SCK, SPI_MISO, SPI_MOSI);
+SD.begin(SD_CS);
+audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
+audio.setVolume(<span class="hljs-number">21</span>); <span class="hljs-comment">// 0...21</span>
+audio.connecttoFS(SD, <span class="hljs-string">"SOLDADITO MARINERO VOZ GUITAR.mp3"</span>);
+Serial.println(<span class="hljs-string">"Reproduciendo..."</span>);
+}
+
+</div></code></pre>
+<p>Primero de todo creamos un nuevo objeto de la clase Audio, el cuál vamos a usar para enviar la configuración de pines, la configuración de volumen...
+Una vez entramos en el void setup(), primero inicializamos el puerto serie.
+Establecemos el pin SD_CS como salida.
+Configuramos los pines SPI para la recepción de datos desde la SD y incializamos esta comunicación mediante el SPI.begin().
+Si nos fijamos en la función begin de la clase SPI vemos:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">void</span> SPIClass::begin(int8_t sck, int8_t miso, int8_t mosi, int8_t ss)
+{
+    <span class="hljs-keyword">if</span>(_spi) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">if</span>(!_div) {
+        _div = spiFrequencyToClockDiv(_freq);
+    }
+
+    _spi = spiStartBus(_spi_num, _div, SPI_MODE0, SPI_MSBFIRST);
+    <span class="hljs-keyword">if</span>(!_spi) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">if</span>(sck == <span class="hljs-number">-1</span> &amp;&amp; miso == <span class="hljs-number">-1</span> &amp;&amp; mosi == <span class="hljs-number">-1</span> &amp;&amp; ss == <span class="hljs-number">-1</span>) {
+        _sck = (_spi_num == VSPI) ? SCK : <span class="hljs-number">14</span>;
+        _miso = (_spi_num == VSPI) ? MISO : <span class="hljs-number">12</span>;
+        _mosi = (_spi_num == VSPI) ? MOSI : <span class="hljs-number">13</span>;
+        _ss = (_spi_num == VSPI) ? SS : <span class="hljs-number">15</span>;
+    } <span class="hljs-keyword">else</span> {
+        _sck = sck;
+        _miso = miso;
+        _mosi = mosi;
+        _ss = ss;
+    }
+
+    spiAttachSCK(_spi, _sck);
+    spiAttachMISO(_spi, _miso);
+    spiAttachMOSI(_spi, _mosi);
+
+}
+</div></code></pre>
+<p>Vemos que después de comprovar dos cosas, comprueba si ha recibido parámetros que sean -1,de esa forma pondría los parámetros por defecto, pero si les pasamos nuestros propios pines usará esos mismos.
+Una vez establecidas las variables, llama a otras funciones spiAttach.
+He estado mirando estas funciones y básicamente lo que hacen son dos comprovaciones de si el PIN enviado es válido y lo compara con uno establecido por el framework de arduino que son normalmente usados.
+De esa forma se comprueba que no haya errores a la hora de declarar los pines que hemos pùesto y así lo sabríamos antes de mirar otros problemas de el código.</p>
+<h1 id="ejemplo-funci%C3%B3n-spiattachmiso">Ejemplo función spiAttachMISO()</h1>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">spiAttachMISO</span>(<span class="hljs-params">spi_t * spi, int8_t miso</span>)</span>
+{
+    <span class="hljs-keyword">if</span>(!spi) {
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-keyword">if</span>(miso &lt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">if</span>(spi-&gt;num == HSPI) {
+            miso = <span class="hljs-number">12</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(spi-&gt;num == VSPI) {
+            miso = <span class="hljs-number">19</span>;
+        } <span class="hljs-keyword">else</span> {
+            miso = <span class="hljs-number">7</span>;
+        }
+    }
+    SPI_MUTEX_LOCK();
+    pinMode(miso, INPUT);
+    pinMatrixInAttach(miso, SPI_MISO_IDX(spi-&gt;num), <span class="hljs-literal">false</span>);
+    SPI_MUTEX_UNLOCK();
+}
+
+</div></code></pre>
+<p>Una vez inicializado el bus SPI, seguimos mediante la función SD.begin().
+Esta configura la línea SS el cuál establecce el dispositivo con el que se va a llevar la comunicacion.</p>
+<p>Por ahora hemos acabado con la configuración con el bus SPI, ahora empecemos con el I2S con el cuál vamos a enviar el audio leído de la SD.
+Primero seleccionamos el Pinout, es decir los pines de salida.
+La clase Audio tiene unas funciones establecidas para configuraciones muy básicas como seleccionar el SampleRate, el volumen y otras básicas de cvonfiguración como is_running...
+Una vez seleccionados los pines de salida, seleccionamos el volumen de audio. Mirando la función, vemos que comprueba si es mas pequeño que 21 y si lo es, estalece la variable m_vol de la clase como el número pasado que está guardado dentro de una tabla llamada volumetable[].</p>
+<p>No he encontrado en que punto usa esta variable para configurar el volumen de la reproducción, supongo que va más allá de lo que pemsaba...</p>
+<p>Finalmente ya usa una última función para saber que fichero leer de la SD.
+En esta función le pasamos el objeto SD y el nombre de la canción que deseamos reproducir.
+Esta función comprueba si el nombre de la función tiene un tamaño más grande de 255 y si lo es nos daría un error. Me ha precido curioso el número ya que es 2^8, no estoy seguro si tiene algo que ver...
+Una vez hecho esto establece el nombre del fichero de tal forma que se pueda leer de forma correcta por el programa. Mira si el fichero dicho existe y entonces lo abre...
+Para finalizar esta función ya mira que tipo de fichero es mediante una función para mirar el final de un string.
+Recordamos que acepta ficheros <em>.mp3, .wav, .flac</em> básicamente porque solo dispone de esos decodificadores de audio.</p>
+<p>Una vez hecho todo esto entramos al void loop() en el cuál sólo usaremos una función de la librería Audio que nos va a hacer un loop del fichero.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loop</span>(<span class="hljs-params"></span>)</span>{
+audio.loop();
+}
+
+</div></code></pre>
+<p>Todo lo demás que sigue en el código es solamente información que mostrarmos por el puerto serie.</p>
+<h3 id="conclusiones">CONCLUSIONES</h3>
+<p>He tenido varios problemas al ejecutar el código ya que me daba bastantes errores con la librería Audio.h y no estaba seguro si tenía que instalarla o pertenecía al framework de arduino.
+En el enunciado del ejercicio nos decía que la teníamos en el github por lo que la buscaba desde el mismo PlatformIO y encontraba algunas parecidas pero que no me servían con el código descrito. Por lo que finalmente pedí ayuda y me dijeron lo que debía hacer con esa librería.<br>
+Una vez hecho todo eso me encontré que no me leía el fichero de la tarjeta SD y tras mirar los pines que había puesto y ver que lo tenía correctamente conectado lo que hice fue formatear la tarjeta SD mediante Linux ya que con Windows tuve problemas y no me hacía un formateo correcto y finalmente pude abrir el fichero con la ESP32.<br>
+El siguiente problema fue el mismo descrito en el ejercicio anterior sobre el altavoz utilizado y el chip <em>MAX98357</em>.</p>
+<h2 id="salida-por-el-puerto-serie">SALIDA POR EL PUERTO SERIE</h2>
+<pre class="hljs"><code><div>infoPSRAM not found, inputBufferSize: <span class="hljs-number">6399</span> bytes
+infobuffers freed, free Heap: <span class="hljs-number">287056</span> bytes
+infoReading file: <span class="hljs-string">"/SOLDADITO MARINERO VOZ GUITAR.mp3"</span>
+infoMP3Decoder has been initialized, free Heap: <span class="hljs-number">263052</span> bytes
+Reproduciendo...
+infostream ready
+infoContent-Length: <span class="hljs-number">2587068</span>
+infofile has no mp3 tag, skip metadata
+infoAudio-Length: <span class="hljs-number">2587068</span>
+infosyncword found at pos <span class="hljs-number">0</span>
+infoChannels: <span class="hljs-number">2</span>
+infoSampleRate: <span class="hljs-number">44100</span>
+infoBitsPerSample: <span class="hljs-number">16</span>
+infoBitRate: <span class="hljs-number">128000</span>
+</div></code></pre>
+
+</body>
+</html>

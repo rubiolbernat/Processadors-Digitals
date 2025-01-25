@@ -1,0 +1,2 @@
+Hola món!
+Som Àfrica i Bernat. Aquest és el nostre arxiu.txt que farem servir per a la pràctica 6.

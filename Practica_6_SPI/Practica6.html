@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Practica6.MD</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="practica-5--buses-de-comunicaci%C3%B3n-ii-spi">PRACTICA 5 :  Buses de comunicación II (SPI)</h1>
+<p>El objetivo de la practica es comprender el funcionamiento del bus spi</p>
+<h2 id="introducci%C3%B3n-te%C3%B3rica">Introducción teórica</h2>
+<h2 id="bus-spi">BUS SPI</h2>
+<p>El bus SPI (Serial Peripheral Interface) fue desarrollado por Motorola en 1980. Sus ventajas
+respecto a otros sistemas han hecho que se convierta en un standard de facto en el mundo
+de la electrónica y automatización.</p>
+<p>El bus SPI tiene una arquitectura de tipo maestro-esclavo. El dispositivo maestro (master)
+puede iniciar la comunicación con uno o varios dispositivos esclavos (slave), y enviar o
+recibir datos de ellos. Los dispositivos esclavos no pueden iniciar la comunicación, ni
+intercambiar datos entre ellos directamente.</p>
+<p>En el bus SPI la comunicación de datos entre maestros y esclavo se realiza en dos líneas
+independientes, una del maestro a los esclavos, y otra de los esclavos al maestro.
+Por tanto la comunicación es Full Duplex, es decir, el maestro puede enviar y recibir datos simultáneamente.</p>
+<p>Otra característica de SPI es que es bus síncrono. El dispositivo maestro proporciona una señal
+de reloj, que mantiene a todos los dispositivos sincronizados. Esto reduce la complejidad del sistema
+frente a los sistemas asíncronos.</p>
+<p>Por tanto, el bus SPI requiere un <strong>mínimo de 3 líneas</strong>.</p>
+<p><img src="https://www.luisllamas.es/wp-content/uploads/2016/05/arduino-spi-esquema-basico.png" alt=""></p>
+<ul>
+<li>MOSI (Master-out, slave-in) para la comunicación del maestro al esclavo.</li>
+<li>MISO (Master-in, slave-out) para comunicación del esclavo al maestro.</li>
+<li>SCK (Clock) señal de reloj enviada por el maestro.</li>
+</ul>
+<p>Además, se requiere <strong>una línea adicional SS (Slave Select)</strong> para cada dispositivo esclavo conectado,
+para seleccionar el dispositivo con el que se va a realizar la comunicación.</p>
+<p><img src="https://www.luisllamas.es/wp-content/uploads/2016/05/arduino-spi-esquema.png" alt=""></p>
+<p>Sin embargo, esto tiene la desventaja de requerir una línea por cada dispositivo esclavo.
+En caso de disponer muchos dispositivos esclavos esto puede no ser práctico, por lo que es
+posible adoptar una conexión en cascada, donde cada esclavo trasmite datos al siguiente.</p>
+<p><img src="https://www.luisllamas.es/wp-content/uploads/2016/05/arduino-spi-esquema-cascada.png" alt=""></p>
+<p>Por contra, en esta configuración la información debe llegar a todos los esclavos para que la
+comunicación sea finalizada por lo que, en general, la velocidad de respuesta del bus es menor.</p>
+<h2 id="funcionamiento-del-bus-spi">funcionamiento del BUS SPI</h2>
+<p>El funcionamiento del bus SPI es sencillo.</p>
+<p><img src="https://www.luisllamas.es/wp-content/uploads/2016/05/arduino-spi-funcionamiento.png" alt=""></p>
+<p>Por defecto el maestro mantiene en estado HIGH todas las líneas SS. Cuando el maestro quiere
+establecer comunicación con esclavo pone a LOW la línea SS correspondiente, lo que indica al
+esclavo que debe iniciar la comunicación.</p>
+<p>En cada pulso de la señal de reloj, normalmente en el flanco de subida, el dispositivo maestro
+envía un bit del esclavo y a la vez que recibe un bit del esclavo seleccionado.</p>
+<p>La trama (los datos enviados) no sigue ninguna regla, es decir, podemos enviar cualquier secuencia
+arbitraria de bits. Esto hace que los dispositivos conectados necesiten tener pre-acordado la longitud y
+significado de los que van a enviar y recibir.</p>
+<p>La electrónica requerida para implementar el bus SPI es sencilla y barata, incluso un único registro
+de desplazamiento puede ser suficiente. Además, como la señal de reloj es proporcionada por el maestro,
+los esclavos ni siquiera necesitan disponer de un reloj propio.</p>
+<h3 id="ventajas">Ventajas</h3>
+<ul>
+<li>Alta velocidad de trasmisión (hasta 80 Mhz en ESP32) y Full Duplex</li>
+<li>Los dispositivos necesarios son sencillos y baratos, lo que hace que esté integrado en muchos dispositivos.</li>
+<li>Puede mandar secuencias de bit de cualquier tamaño, sin dividir y sin interrupciones.</li>
+</ul>
+<h3 id="desventajas">desventajas</h3>
+<ul>
+<li>Se requiere 3 cables (SCK, MOSI y MISO) + 1 cable adicional (SS) por cada dispositivo esclavo.</li>
+<li>Solo es adecuado a corta distancias (unos 30cm)s</li>
+<li>No se dispone de ningún mecanismo de control, es decir, no podemos saber si el mensaje ha sido recibido y menos si ha sido recibido correctamente.</li>
+<li>La longitud de los mensajes enviados y recibidos tiene que ser conocida por ambos dispositivos.</li>
+</ul>
+<h2 id="bus-spi-en-esp32">BUS SPI en ESP32</h2>
+<h3 id="esp32">ESP32</h3>
+<p>ESP32 tiene 3 buses spi; uno de ellos se utiliza para la carga del programa y no es utilizable, los dos restantes están disponibles para el programador</p>
+<p><img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/08/esp32-pinout-chip-ESP-WROOM-32.png?resize=1024,523&amp;quality=100&amp;strip=all&amp;ssl=1" alt=""></p>
+<p>Flash SPI integrado en el ESP-WROOM-32
+GPIO 6 a GPIO 11 están expuestos en algunas placas de desarrollo ESP32.
+Sin embargo, estos pines están conectados al flash SPI integrado en el chip ESP-WROOM-32 y no se recomiendan para otros usos.
+Por lo tanto, <strong>no utilice</strong> estos pines en sus proyectos:</p>
+<p>GPIO 6 (SCK/CLK)
+GPIO 7 (SDO/SD0)
+GPIO 8 (SDI/SD1)
+GPIO 9 (SHD/SD2)
+GPIO 10 (SWP/SD3)
+GPIO 11 (CSC/CMD)</p>
+<p>la conexion por defecto es la que sigue :</p>
+<table>
+<thead>
+<tr>
+<th>SPI</th>
+<th>MOSI</th>
+<th>MISO</th>
+<th>CLK</th>
+<th>CS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VSPI</td>
+<td>GPIO 23</td>
+<td>GPIO 19</td>
+<td>GPIO 18</td>
+<td>GPIO 5</td>
+</tr>
+<tr>
+<td>HSPI</td>
+<td>GPIO 13</td>
+<td>GPIO 12</td>
+<td>GPIO 14</td>
+<td>GPIO 15</td>
+</tr>
+</tbody>
+</table>
+<h3 id="esp32-s3">ESP32-S3</h3>
+<p>ESP32-S3 dispone de cuatro buses SPI; dos de ellos se utilizan para conectarse a la memoria Flash y PSRAM.</p>
+<p><img src="https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/_images/ESP32-S3_DevKitC-1_pinlayout_v1.1.jpg" alt=""></p>
+<p>La conexión por defecto es la que sigue:</p>
+<table>
+<thead>
+<tr>
+<th>SPI</th>
+<th>MOSI</th>
+<th>MISO</th>
+<th>CLK</th>
+<th>CS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPI2</td>
+<td>GPIO 35</td>
+<td>GPIO 37</td>
+<td>GPIO 36</td>
+<td>GPIO 39</td>
+</tr>
+<tr>
+<td>SPI3</td>
+<td>GPIO 11</td>
+<td>GPIO 13</td>
+<td>GPIO 12</td>
+<td>GPIO 10</td>
+</tr>
+</tbody>
+</table>
+<p>Para mas información:
+https://www.luisllamas.es/en/esp32-s3-hardware-details-pinout/</p>
+<h2 id="configuraci%C3%B3n-de-spi-para-habilitar-la-comunicaci%C3%B3n-spi">Configuración de SPI para habilitar la comunicación SPI</h2>
+<p>Si queremos iniciar una comunicación, primero tenemos que habilitar SPI con el siguiente código Arduino
+SPI.beginTransaction (SPISettings (8000000, MSBFIRST, SPI_MODE0));
+Verá que al comenzar una comunicación SPI hay un total de 3 configuraciones que se pueden configurar,
+si queremos controlar la configuración manualmente. Esta configuración de SPI no se elimina cuando la comunicación SPI está deshabilitada con
+SPI.endTransaction () .
+En su lugar, puede cambiar la configuración de SPI sobrescribiendo la configuración a través de la función
+SPISettings () .
+Siempre existe la opción de permitir que el microcontrolador establezca la configuración de SPI por defecto</p>
+<h2 id="ajuste-de-frecuencia-de-reloj-para-spi">Ajuste de frecuencia de reloj para SPI</h2>
+<p>La primera configuración es la frecuencia de reloj SPI, que se establece en 8 Mbits / s en los ejemplos.(por defecto en ESP32)</p>
+<h2 id="configuraci%C3%B3n-de-cambio-de-datos-para-spi">Configuración de cambio de datos para SPI</h2>
+<p>El segundo ajuste es el desplazamiento de datos que define qué bit se transfiere primero. Hay 2 opciones:</p>
+<ul>
+<li>Bit más significativo (MSB) → MSBFIRST: El bit 8 es el primer bit que se transfiere a través de SPI</li>
+<li>Último bit significativo (LSB) → LSBFIRST: El bit 1 es el primer bit que se transfiere a través de SPI</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Bit 8</th>
+<th>Bit 7</th>
+<th>Bit 6</th>
+<th>Bit 5</th>
+<th>Bit 4</th>
+<th>Bit 3</th>
+<th>Bit 2</th>
+<th>Bit 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2⁷</td>
+<td>2⁶</td>
+<td>2⁵</td>
+<td>2⁴</td>
+<td>2³</td>
+<td>2²</td>
+<td>2¹</td>
+<td>2⁰</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>MSB</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>LSB</td>
+</tr>
+</tbody>
+</table>
+<p>La mayoría de los chips SPI utilizan el primer orden de datos MSB.</p>
+<h2 id="modos-de-transmisi%C3%B3n-para-spi">Modos de transmisión para SPI</h2>
+<p>Hay en total 4 modos de transmisión diferentes dependiendo de la combinación de 2 ajustes de transmisión:</p>
+<ul>
+<li>Fase de reloj (CPHA)</li>
+<li>CPHA = 1: Muestras del flanco ascendente del pulso de reloj</li>
+<li>CPHA = 0: Muestras del flanco descendente del pulso de reloj</li>
+<li>Polaridad del reloj (CPOL)</li>
+<li>Reloj inactivo cuando está alto (CPOL = 1): Cada ciclo consta de un pulso de 0. El borde anterior es un borde descendente y el borde posterior es un borde ascendente.</li>
+<li>Reloj inactivo cuando está bajo (CPOL = 0): Cada ciclo consta de un pulso de 1. El borde anterior es un borde ascendente y el borde posterior es un borde descendente.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Modo</th>
+<th>Polaridad del reloj (CPOL)</th>
+<th>Fase de reloj (CPHA)</th>
+<th>Borde de salida</th>
+<th>Captura de datos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPI_MODE0</td>
+<td>0</td>
+<td>0</td>
+<td>Descendente</td>
+<td>Creciente</td>
+</tr>
+<tr>
+<td>SPI_MODE1</td>
+<td>0</td>
+<td>1</td>
+<td>Creciente</td>
+<td>Descendente</td>
+</tr>
+<tr>
+<td>SPI_MODE2</td>
+<td>1</td>
+<td>0</td>
+<td>Creciente</td>
+<td>Descendente</td>
+</tr>
+<tr>
+<td>SPI_MODE3</td>
+<td>1</td>
+<td>1</td>
+<td>Descendente</td>
+<td>Creciente</td>
+</tr>
+</tbody>
+</table>
+<p>Para la mayoría de los dispositivos, SPI_MODE0 es el modo de transmisión predeterminado. Las siguientes imágenes muestran los cuatro modos diferentes.
+Ves la línea SCK y cuando el reloj muestra.</p>
+<p><img src="https://892962.smushcdn.com/2087382/wp-content/uploads/2020/01/Modes-of-Transmission.png?lossy=1&amp;strip=1&amp;webp=1" alt=""></p>
+<h2 id="ejercicios-practicos">EJERCICIOS PRACTICOS</h2>
+<p>Existen muchos dispositivos que tienen instalado el SPI para su control ; si bien en estas practicas vamos a poner
+enfasis en aquellos dispositivos que a traves de comentarios de los alumnos son de facil obtencion .</p>
+<p>Utilizaremos una lectura de SD</p>
+<p>hardware :  https://www.amazon.es/gp/product/B06XHJTGGC/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&amp;psc=1</p>
+<p><img src="https://www.electronics-lab.com/wp-content/uploads/2018/02/Micro-SD-Card-Module.jpg" alt=""></p>
+<p>Utilizaremos una lectura RFID</p>
+<p>hardware : https://www.amazon.es/BUYGOO-Keychain-Module-Reader-Arduino/dp/B07D9C82W8/ref=sr_1_7?adgrpid=64168290956&amp;dchild=1&amp;gclid=Cj0KCQjw9_mDBhCGARIsAN3PaFM9-kfIgN51lwJEzMFffK_oXlGh0EMOYz9he8RiqdjbXX8q_oYJGW0aAobkEALw_wcB&amp;hvadid=320777693966&amp;hvdev=c&amp;hvlocphy=1005433&amp;hvnetw=g&amp;hvqmt=e&amp;hvrand=2288607395559069836&amp;hvtargid=kwd-302776364356&amp;hydadcr=11857_1752977&amp;keywords=rc522+rfid+module&amp;qid=1618925460&amp;sr=8-7</p>
+<p><img src="http://www.naylampmechatronics.com/797-large_default/modulo-rfid-mfrc522-.jpg" alt=""></p>
+<h2 id="ejercicio-practico-1-lecturaescritura-de-memoria-sd">Ejercicio Practico 1  LECTURA/ESCRITURA  DE MEMORIA SD</h2>
+<pre class="hljs"><code><div>#include &lt;SPI.h&gt;
+#include &lt;SD.h&gt;
+
+File myFile;
+
+void setup()
+{
+  Serial.begin(9600);
+  Serial.print(&quot;Iniciando SD ...&quot;);
+  if (!SD.begin(4)) {
+    Serial.println(&quot;No se pudo inicializar&quot;);
+    return;
+  }
+  Serial.println(&quot;inicializacion exitosa&quot;);
+ 
+  myFile = SD.open(&quot;archivo.txt&quot;);//abrimos  el archivo 
+  if (myFile) {
+    Serial.println(&quot;archivo.txt:&quot;);
+    while (myFile.available()) {
+    	Serial.write(myFile.read());
+    }
+    myFile.close(); //cerramos el archivo
+  } else {
+    Serial.println(&quot;Error al abrir el archivo&quot;);
+  }
+}
+
+void loop()
+{
+  
+}
+
+</div></code></pre>
+<ol>
+<li>Descibir la salida por el puerto serie</li>
+<li>Explicar el funcionamiento</li>
+</ol>
+<h2 id="ejercicio-practico-2-lectura-de-etiqueta-rfid">Ejercicio Practico 2 LECTURA DE ETIQUETA RFID</h2>
+<p>referencia:  https://naylampmechatronics.com/blog/22_tutorial-modulo-lector-rfid-rc522.html</p>
+<pre class="hljs"><code><div>#include &lt;SPI.h&gt;
+#include &lt;MFRC522.h&gt;
+
+#define RST_PIN	9    //Pin 9 para el reset del RC522
+#define SS_PIN	10   //Pin 10 para el SS (SDA) del RC522
+MFRC522 mfrc522(SS_PIN, RST_PIN); //Creamos el objeto para el RC522
+
+void setup() {
+	Serial.begin(9600); //Iniciamos la comunicación  serial
+	SPI.begin();        //Iniciamos el Bus SPI
+	mfrc522.PCD_Init(); // Iniciamos  el MFRC522
+	Serial.println(&quot;Lectura del UID&quot;);
+}
+
+void loop() {
+	// Revisamos si hay nuevas tarjetas  presentes
+	if ( mfrc522.PICC_IsNewCardPresent()) 
+        {  
+  		//Seleccionamos una tarjeta
+            if ( mfrc522.PICC_ReadCardSerial()) 
+            {
+                  // Enviamos serialemente su UID
+                  Serial.print(&quot;Card UID:&quot;);
+                  for (byte i = 0; i &lt; mfrc522.uid.size; i++) {
+                          Serial.print(mfrc522.uid.uidByte[i] &lt; 0x10 ? &quot; 0&quot; : &quot; &quot;);
+                          Serial.print(mfrc522.uid.uidByte[i], HEX);   
+                  } 
+                  Serial.println();
+                  // Terminamos la lectura de la tarjeta  actual
+                  mfrc522.PICC_HaltA();         
+            }      
+	}	
+}
+
+
+</div></code></pre>
+<ol>
+<li>Descibir la salida por el puerto serie</li>
+<li>Explicar el funcionamiento</li>
+</ol>
+<h2 id="ejercicio-practico-3">Ejercicio Practico 3</h2>
+<p>A realizar  como ejercicio  en casa</p>
+<hr>
+<p><em><strong>Para la realizacion de este ejercicio pueden utilizar  cualquier
+elemento spi que tengan disponible</strong></em> .</p>
+<p>Necesario presentar en el informe y subirlo al github</p>
+<ol>
+<li>fotos del montaje</li>
+<li>salidas de depuracion ( print...)</li>
+<li>codigo generado</li>
+<li>explicación del codigo</li>
+</ol>
+<h2 id="ejercicio-de-subida-de-nota--muy-valorado">Ejercicio de subida de nota  ( muy valorado)</h2>
+<ul>
+<li>Parte  1.- Realizar utilizando el sd  y el lector rfid escribiendo en un fichero.log  la hora y codigo de cada lectura ( describir como se resuelve el hardware
+para utilizar un spi para dos perifericos) .</li>
+<li>Parte  2.- Generar una pagina web donde se pueda ver la lectura del lector rfid</li>
+</ul>
+
+</body>
+</html>
